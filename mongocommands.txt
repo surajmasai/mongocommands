@@ -1,0 +1,153 @@
+use assignment -> create databasename
+
+db.users.insert({first_name:"suraj", last_name:"kumar", email:"suraj@gmail.com", gender:"male", ip_address:"1234",age:"22"}) -> create  collection and insert only one data
+
+db.users.insertMany([{first_name:"niki", last_name:"kumari", email:"niki@gmail.com", gender:"female", ip_address:"1224",age:"12"},
+{first_name:"ravi", last_name:"kumar", email:"ravi@gmail.com", gender:"male", ip_address:"1214",age:"18"},
+{first_name:"deepak", last_name:"kumar", email:"deepak@gmail.com", gender:"male", ip_address:"1231",age:"21"},
+{first_name:"ankit", last_name:"kumar", email:"ankit@gmail.com", gender:"male", ip_address:"1134",age:"23"},
+{first_name:"niraj", last_name:"kumar", email:"niraj@gmail.com", gender:"male", ip_address:"2234",age:"20"},
+{first_name:"lala", last_name:"kumar", email:"lala@gmail.com", gender:"male", ip_address:"2134",age:"24"},
+{first_name:"vishnu", last_name:"kumar", email:"lala@gmail.com", gender:"male", ip_address:"2134",age:"25"},
+{first_name:"aman", last_name:"kumar", email:"aman@gmail.com", gender:"male", ip_address:"1231",age:"16"},
+{first_name:"ritu", last_name:"kumari", email:"ritu@gmail.com", gender:"female", ip_address:"7865",age:"19"},
+{first_name:"shardha", last_name:"kumari", email:"shardha@gmail.com", gender:"female", ip_address:"3456",age:"20"},
+{first_name:"ravish", last_name:"kumar", email:"ravish@gmail.com", gender:"male", ip_address:"8546",age:"27"}])  ->  insertMany data in users collection;
+
+db.users.find()
+{ "_id" : ObjectId("619bccf875fd00ba64d8a8b5"), "first_name" : "suraj", "last_name" : "kumar", "email" : "suraj@gmail.com", "gender" : "male", "ip_address" : "1234", "age" : "22" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cbe"), "first_name" : "niki", "last_name" : "kumari", "email" : "niki@gmail.com", "gender" : "female", "ip_address" : "1224", "age" : "12" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cbf"), "first_name" : "ravi", "last_name" : "kumar", "email" : "ravi@gmail.com", "gender" : "male", "ip_address" : "1214", "age" : "18" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc0"), "first_name" : "deepak", "last_name" : "kumar", "email" : "deepak@gmail.com", "gender" : "male", "ip_address" : "1231", "age" : "21" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc1"), "first_name" : "ankit", "last_name" : "kumar", "email" : "ankit@gmail.com", "gender" : "male", "ip_address" : "1134", "age" : "23" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc2"), "first_name" : "niraj", "last_name" : "kumar", "email" : "niraj@gmail.com", "gender" : "male", "ip_address" : "2234", "age" : "20" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc3"), "first_name" : "lala", "last_name" : "kumar", "email" : "lala@gmail.com", "gender" : "male", "ip_address" : "2134", "age" : "24" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc4"), "first_name" : "vishnu", "last_name" : "kumar", "email" : "lala@gmail.com", "gender" : "male", "ip_address" : "2134", "age" : "25" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc5"), "first_name" : "aman", "last_name" : "kumar", "email" : "aman@gmail.com", "gender" : "male", "ip_address" : "1231", "age" : "16" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc6"), "first_name" : "ritu", "last_name" : "kumari", "email" : "ritu@gmail.com", "gender" : "female", "ip_address" : "7865", "age" : "19" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc7"), "first_name" : "shardha", "last_name" : "kumari", "email" : "shardha@gmail.com", "gender" : "female", "ip_address" : "3456", "age" : "20" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc8"), "first_name" : "ravish", "last_name" : "kumar", "email" : "ravish@gmail.com", "gender" : "male", "ip_address" : "8546", "age" : "27" }  -> find all data
+
+> db.users.find().pretty()  -> this is using for looks pretty;
+
+
+> db.users.findOne()
+{
+	"_id" : ObjectId("619bccf875fd00ba64d8a8b5"),
+	"first_name" : "suraj",
+	"last_name" : "kumar",
+	"email" : "suraj@gmail.com",
+	"gender" : "male",
+	"ip_address" : "1234",
+	"age" : "22"
+}  -> find only one data
+
+
+> db.users.findOne({"_id" : ObjectId("619bd18f2dc10fb2ada69cc7")})
+{
+	"_id" : ObjectId("619bd18f2dc10fb2ada69cc7"),
+	"first_name" : "shardha",
+	"last_name" : "kumari",
+	"email" : "shardha@gmail.com",
+	"gender" : "female",
+	"ip_address" : "3456",
+	"age" : "20"
+}
+
+
+> db.users.update({"_id" : ObjectId("619bd18f2dc10fb2ada69cc7")},{$set:{age:18}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+
+> db.users.findOne({"_id" : ObjectId("619bd18f2dc10fb2ada69cc7")})
+{
+	"_id" : ObjectId("619bd18f2dc10fb2ada69cc7"),
+	"first_name" : "shardha",
+	"last_name" : "kumari",
+	"email" : "shardha@gmail.com",
+	"gender" : "female",
+	"ip_address" : "3456",
+	"age" : 18
+}
+> db.users.update({"_id" : ObjectId("619bd18f2dc10fb2ada69cc7")},{$set:{age:18, last_name: "sharma"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.users.findOne({"_id" : ObjectId("619bd18f2dc10fb2ada69cc7")})
+{
+	"_id" : ObjectId("619bd18f2dc10fb2ada69cc7"),
+	"first_name" : "shardha",
+	"last_name" : "sharma",
+	"email" : "shardha@gmail.com",
+	"gender" : "female",
+	"ip_address" : "3456",
+	"age" : 18
+}
+
+
+
+
+ db.users.updateMany({gender:"male"}, {$set: {gender: "Female"}})
+{ "acknowledged" : true, "matchedCount" : 9, "modifiedCount" : 9 }
+> db.users.find()
+{ "_id" : ObjectId("619bccf875fd00ba64d8a8b5"), "first_name" : "suraj", "last_name" : "kumar", "email" : "suraj@gmail.com", "gender" : "Female", "ip_address" : "1234", "age" : "22" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cbe"), "first_name" : "niki", "last_name" : "kumari", "email" : "niki@gmail.com", "gender" : "female", "ip_address" : "1224", "age" : "12" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cbf"), "first_name" : "ravi", "last_name" : "kumar", "email" : "ravi@gmail.com", "gender" : "Female", "ip_address" : "1214", "age" : "18" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc0"), "first_name" : "deepak", "last_name" : "kumar", "email" : "deepak@gmail.com", "gender" : "Female", "ip_address" : "1231", "age" : "21" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc1"), "first_name" : "ankit", "last_name" : "kumar", "email" : "ankit@gmail.com", "gender" : "Female", "ip_address" : "1134", "age" : "23" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc2"), "first_name" : "niraj", "last_name" : "kumar", "email" : "niraj@gmail.com", "gender" : "Female", "ip_address" : "2234", "age" : "20" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc3"), "first_name" : "lala", "last_name" : "kumar", "email" : "lala@gmail.com", "gender" : "Female", "ip_address" : "2134", "age" : "24" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc4"), "first_name" : "vishnu", "last_name" : "kumar", "email" : "lala@gmail.com", "gender" : "Female", "ip_address" : "2134", "age" : "25" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc5"), "first_name" : "aman", "last_name" : "kumar", "email" : "aman@gmail.com", "gender" : "Female", "ip_address" : "1231", "age" : "16" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc6"), "first_name" : "ritu", "last_name" : "kumari", "email" : "ritu@gmail.com", "gender" : "female", "ip_address" : "7865", "age" : "19" }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc7"), "first_name" : "shardha", "last_name" : "sharma", "email" : "shardha@gmail.com", "gender" : "female", "ip_address" : "3456", "age" : 18 }
+{ "_id" : ObjectId("619bd18f2dc10fb2ada69cc8"), "first_name" : "ravish", "last_name" : "kumar", "email" : "ravish@gmail.com", "gender" : "Female", "ip_address" : "8546", "age" : "27" }
+
+
+
+
+> db.users.remove({"_id" : ObjectId("619bd18f2dc10fb2ada69cbe")})
+WriteResult({ "nRemoved" : 1 })
+> db.users.deleteOne({"_id" : ObjectId("619bd18f2dc10fb2ada69cc8")})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+
+
+> db.users.deleteMany({gender: "Female"})
+{ "acknowledged" : true, "deletedCount" : 8 }
+> db.users.find().pretty()
+{
+	"_id" : ObjectId("619bd18f2dc10fb2ada69cc6"),
+	"first_name" : "ritu",
+	"last_name" : "kumari",
+	"email" : "ritu@gmail.com",
+	"gender" : "female",
+	"ip_address" : "7865",
+	"age" : "19"
+}
+{
+	"_id" : ObjectId("619bd18f2dc10fb2ada69cc7"),
+	"first_name" : "shardha",
+	"last_name" : "sharma",
+	"email" : "shardha@gmail.com",
+	"gender" : "female",
+	"ip_address" : "3456",
+	"age" : 18
+}
+
+
+
+> show dbs
+admin       0.000GB
+assignment  0.000GB
+config      0.000GB
+local       0.000GB
+test        0.000GB
+> use assignment
+switched to db assignment
+> db.dropDatabase()
+{ "ok" : 1 }
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+
